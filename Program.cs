@@ -6,7 +6,7 @@ namespace Task_20
     {
         static void Main(string[] args)
         {
-            float health = 5, maxHealth = 100;
+            float health = 5;
             bool enterOrExit = true;           
 
             while (enterOrExit)
@@ -14,28 +14,29 @@ namespace Task_20
                 Console.Write("Введите процент заполнения шкалы : ");
                 health = Convert.ToSingle(Console.ReadLine());
 
-                DrawBar(health, maxHealth, 0);
+                DrawBar(health, 0);
 
                 Console.ReadKey();
                 Console.Clear();
             }            
         }
 
-        static void DrawBar(float value, float maxValue,  int position, char symbol = '#',  char emptySymbol = '_')
+        static void DrawBar(float percent,  int position, char symbol = '#',  char emptySymbol = '_')
         {
             string bar = "";
+            float maxLongBar = 50;
 
             Console.SetCursorPosition(0, position);
             Console.Write('[');
 
-            value *= maxValue / 100;
+            percent *= maxLongBar / 100;
 
-            for (int i = 0; i < value; i++)
+            for (int i = 0; i < percent; i++)
             {
                 bar += symbol;
             }
 
-            for (float i = value; i < maxValue; i++)
+            for (float i = percent; i < maxLongBar; i++)
             {
                 bar += emptySymbol;
             }
